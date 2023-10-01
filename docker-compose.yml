@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    meilisearch:
+        image: ${MEILISEARCH_IMAGE}
+        container_name: ${MEILISEARCH_CONTAINER:-meilisearch}
+        restart: always
+        volumes:
+            - ./data.ms:/data.ms
+        ports:
+            - "${MEILISEARCH_PORT}:7700"
+        environment:
+            MEILISEARCH_MASTER_KEY: ${MEILI_MASTER_KEY}
